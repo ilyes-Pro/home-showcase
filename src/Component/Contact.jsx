@@ -1,26 +1,20 @@
-import React, { forwardRef, useRef } from "react";
+import React, { forwardRef, useState } from "react";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast, Slide } from 'react-toastify';
 
 const Contact = forwardRef((props, ref) => {
-    const [result, setResult] = React.useState("");
-    const [C_border, setC_border] = React.useState(false);
-    const [text, setText] = React.useState({
+    const [result, setResult] = useState("");
+    const [text, setText] = useState({
         name: "",
         message: "",
         email: ""
     });
 
-    const listErur = {
-        name: useRef(null),
-        message: useRef(null),
-        email: useRef(null)
-    };
+    const [errors, setErrors] = useState([]); // تحديد الحقول التي بها أخطاء
 
     const onSubmit = async (event) => {
         setResult("Sending....");
         const formData = new FormData(event.target);
-
         formData.append("access_key", "f470e72a-2a9b-4ac2-8bf1-05e10d311bbb");
 
         const response = await fetch("https://api.web3forms.com/submit", {
@@ -33,12 +27,8 @@ const Contact = forwardRef((props, ref) => {
         if (data.success) {
             toast.success("Message sent successfully!");
             setResult("");
-            setC_border(true);
-            setText({
-                name: "",
-                message: "",
-                email: ""
-            });
+            setText({ name: "", message: "", email: "" });
+            setErrors([]);
             event.target.reset();
         } else {
             toast.error("Message failed to send.");
@@ -47,34 +37,28 @@ const Contact = forwardRef((props, ref) => {
         }
     };
 
-    function check(event) {
+    const check = (event) => {
         event.preventDefault();
 
-        // إزالة الحدود من الحقول
-        Object.values(listErur).forEach((ref) => {
-            if (ref.current) ref.current.style.border = "";
-        });
+        const currentErrors = [];
 
-        const errors = [];
+        if (!text.name.trim()) currentErrors.push("name");
+        if (!text.message.trim()) currentErrors.push("message");
+        if (!text.email.trim()) currentErrors.push("email");
 
-        if (!text.name.trim()) errors.push("name");
-        if (!text.message.trim()) errors.push("message");
-        if (!text.email.trim()) errors.push("email");
+        setErrors(currentErrors); // تحديث الحقول ذات الأخطاء
 
-        if (errors.length > 0) {
-            const errorMessage = `Please enter your ${errors.join(" and ")}`;
-            errors.forEach((field) => {
-                if (listErur[field]?.current) {
-                    listErur[field].current.style.border = "2px solid red";
-                }
-            });
-            setC_border(false);
+        if (currentErrors.length > 0) {
+            const errorMessage = `Please enter your ${currentErrors.join(" and ")}`;
             toast.error(errorMessage);
             return;
         }
 
         onSubmit(event);
-    }
+    };
+
+    // دالة لمساعدتنا على التحقق من وجود خطأ في حقل معين
+    const hasError = (field) => errors.includes(field);
 
     return (
         <div className="mb-24" ref={ref}>
@@ -100,9 +84,8 @@ const Contact = forwardRef((props, ref) => {
                                 type="text"
                                 name="name"
                                 value={text.name}
-                                ref={listErur.name}
-                                style={{ border: C_border ? "1px solid #E0E0E0" : undefined }}
-                                className="border border-gray-300 h-9 w-full rounded-sm text-sm p-3"
+                                className={`h-9 w-full rounded-sm text-sm p-3 ${hasError("name") ? "border-2 border-red-500" : "border border-gray-300"
+                                    }`}
                                 placeholder="Your Name"
                                 onChange={(e) => setText((prev) => ({ ...prev, name: e.target.value }))}
                             />
@@ -113,9 +96,8 @@ const Contact = forwardRef((props, ref) => {
                                 type="email"
                                 name="email"
                                 value={text.email}
-                                ref={listErur.email}
-                                style={{ border: C_border ? "1px solid #E0E0E0" : undefined }}
-                                className="border border-gray-300 h-9 w-full rounded-sm text-sm p-3"
+                                className={`h-9 w-full rounded-sm text-sm p-3 ${hasError("email") ? "border-2 border-red-500" : "border border-gray-300"
+                                    }`}
                                 placeholder="Your Email"
                                 onChange={(e) => setText((prev) => ({ ...prev, email: e.target.value }))}
                             />
@@ -127,12 +109,11 @@ const Contact = forwardRef((props, ref) => {
                         <textarea
                             name="message"
                             value={text.message}
-                            ref={listErur.message}
-                            style={{ border: C_border ? "1px solid #E0E0E0" : undefined }}
                             rows="7"
                             cols="30"
                             placeholder="Message"
-                            className="w-full border border-gray-300 rounded-sm text-sm p-3"
+                            className={`w-full rounded-sm text-sm p-3 ${hasError("message") ? "border-2 border-red-500" : "border border-gray-300"
+                                }`}
                             onChange={(e) => setText((prev) => ({ ...prev, message: e.target.value }))}
                         />
                     </div>
