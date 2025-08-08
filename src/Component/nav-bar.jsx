@@ -1,8 +1,7 @@
 import { Assets } from '../assets/Photos and Data/assets';
 import { useState } from 'react';
 import { usePage } from './context/nav-barContext';
-
-
+import { motion } from "framer-motion";
 
 export default function NavBar() {
     const [menu, setMenu] = useState(false);
@@ -10,10 +9,16 @@ export default function NavBar() {
     return (
 
 
-        <div
-            className='flex md:justify-around  justify-between items-center pt-5 flex-wrap  md:px-0.5 px-5 w-11/12 m-auto'
+        <motion.div
+            initial={{ opacity: 0, y: -50 }}
+            // animate={{ opacity: 1, y: 0}}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
 
+            className='flex md:justify-around  justify-between items-center pt-5 flex-wrap  md:px-0.5 px-5 w-11/12 m-auto'
         >
+
 
             <img src={Assets.logo} alt="Logo" className=' cursor-pointer' />
             <ul className=' hidden  gap-5  cursor-pointer st md:flex'>
@@ -112,8 +117,8 @@ export default function NavBar() {
 
 
 
+        </motion.div>
 
-        </div>
 
 
 

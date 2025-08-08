@@ -1,7 +1,7 @@
 import React, { forwardRef, useState } from "react";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast, Slide } from 'react-toastify';
-
+import { motion } from "framer-motion";
 const Contact = forwardRef((props, ref) => {
     const [result, setResult] = useState("");
     const [text, setText] = useState({
@@ -62,7 +62,15 @@ const Contact = forwardRef((props, ref) => {
 
     return (
         <div className="mb-24" ref={ref}>
-            <div className="text-center">
+            <motion.div
+                className="text-center"
+                initial={{ opacity: 0 }}
+                // animate={{ opacity: 1, y: 0}}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, amount: 0.9 }}
+            >
+
                 <h1 className='text-center mt-5 text-3xl mb-1.5'>
                     <span className="font-bold">Contact </span>
                     <span className="underline">With Us</span>
@@ -70,9 +78,20 @@ const Contact = forwardRef((props, ref) => {
                 <p className='text-center mb-11 text-[var(--color-secand)] font-[var(--font-main)]'>
                     Ready to Make a Move? Let's Build Your Future Together
                 </p>
-            </div>
 
-            <div className="flex justify-center">
+            </motion.div>
+            <motion.div
+
+                className="flex justify-center"
+                initial={{ opacity: 0 }}
+                // animate={{ opacity: 1, y: 0}}
+                transition={{ duration: 0.5, ease: "easeOut", delay: 0.5 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, amount: 0.2 }}
+            >
+
+
+
                 <form onSubmit={check} className="flex flex-col sm:w-7/12 w-10/12 gap-6">
 
                     <input type="hidden" name="access_key" value="f470e72a-2a9b-4ac2-8bf1-05e10d311bbb" />
@@ -141,7 +160,9 @@ const Contact = forwardRef((props, ref) => {
                         transition={Slide}
                     />
                 </form>
-            </div>
+            </motion.div>
+
+
         </div>
     );
 });

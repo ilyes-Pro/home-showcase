@@ -28,14 +28,23 @@ const Main = forwardRef((props, ref) => {
         <div className="w-full h-screen bg-cover bg-center" style={{ backgroundImage: `url(${Assets.header_img})` }} ref={ref}>
 
             <NavBar />
-            <div className="flex flex-col justify-center items-center   " style={{ height: 'calc(100vh - 80px)' }}>
+            <motion.div
+                initial={{ opacity: 0, y: -70 }}
+                // animate={{ opacity: 1, y: 0}}
+                transition={{ duration: 0.7, delay: 0.7, ease: "easeOut" }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+
+                className="flex flex-col justify-center items-center   " style={{ height: 'calc(100vh - 80px)' }}
+            >
+
                 <h1 className="md:text-6xl text-5xl text-white md:w-[50%] w-[95%] text-center font-bold">Explore homes that fit your dreams</h1>
                 <div className="mt-10 flex gap-5">
                     <button className='text-white bg-transparent p-2 rounded-md w-28 cursor-pointer hover:bg-white hover:text-black border-white border-2 hover:p-1.5 transition duration-300 font-(family-name:--font-main) font-medium '>Sign up</button>
                     <button className='text-white bg-blue-500 p-2 rounded-md w-28 h-12 cursor-pointer   hover:bg-blue-600  transition duration-300 font-(family-name:--font-main) font-medium '>Sign up</button>
 
                 </div>
-            </div>
+            </motion.div>
             {/* 
             {ArrowU && <div className="bg-gray-600 w-14 h-14 fixed right-10 bottom-10 rounded-4xl flex justify-center items-center cursor-pointer">
 

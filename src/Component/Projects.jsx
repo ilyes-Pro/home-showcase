@@ -8,7 +8,7 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { Assets } from '../assets/Photos and Data/assets';
 import { projectsData } from '../assets/Photos and Data/assets';
 import { forwardRef } from "react"
-
+import { motion } from "framer-motion";
 
 
 const Projects = forwardRef((props, ref) => {
@@ -68,15 +68,35 @@ const Projects = forwardRef((props, ref) => {
 
                         return (
 
-                            <SwiperSlide className='sm:!w-[280px] !p-0 sm:!h-[350px] mb-14 ' key={index}>
-                                <img src={a.image} alt="Slide 1" />
-                                <div className='w-[75%] h-[60px] bg-white absolute bottom-0 right-[50%] translate-[50%] shadow-md'>
+                            <SwiperSlide className='relative overflow-visible sm:!w-[280px] !p-0 sm:!h-[350px] mb-14' key={index}>
+                                <motion.img
+                                    src={a.image}
+                                    alt="Slide 1"
+                                    className="w-full h-auto object-cover"
+                                    initial={{ opacity: 0 }}
+                                    whileInView={{ opacity: 1 }}
+                                    transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 + index / 3.5 }}
+                                    viewport={{ once: true, }}
+                                />
+                                <motion.div
+                                    src={a.image}
+                                    alt="Slide 1"
+                                    className='w-[75%] h-[60px] bg-white absolute bottom-0 right-[50%] translate-x-[50%] shadow-md'
+                                    initial={{ opacity: 0, y: 10 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.5, ease: "easeOut", delay: 1 + index / 3.5 }}
+                                    viewport={{ once: true, }}
+                                >
+
+
                                     <div className='ml-4 mt-1.5'>
                                         <h1 className='font-bold text-lg'>{a.title}</h1>
                                         <p className='text-[var(--color-secand)] text-sm'>{a.price}</p>
                                     </div>
-                                </div>
-                            </SwiperSlide  >
+
+                                </motion.div>
+                            </SwiperSlide>
+
 
                         )
 
