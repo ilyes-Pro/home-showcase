@@ -6,8 +6,8 @@ import { Moon, Sun, X } from 'lucide-react';
 
 export default function NavBar() {
     const [menu, setMenu] = useState(false);
-    const { page, setPage } = usePage();
-    const [darkMode, setDarkMode] = useState(true);
+    const { page, setPage, darkMode, setDarkMode } = usePage();
+    // const [darkMode, setDarkMode] = useState(true);
 
 
     useEffect(() => {

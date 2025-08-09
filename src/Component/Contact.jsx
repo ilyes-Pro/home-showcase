@@ -2,8 +2,10 @@ import React, { forwardRef, useState } from "react";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast, Slide } from 'react-toastify';
 import { motion } from "framer-motion";
+import { usePage } from './context/nav-barContext';
 const Contact = forwardRef((props, ref) => {
     const [result, setResult] = useState("");
+    const { darkMode } = usePage();
     const [text, setText] = useState({
         name: "",
         message: "",
@@ -157,7 +159,7 @@ const Contact = forwardRef((props, ref) => {
                         draggable
                         pauseOnHover
 
-                        theme={document.documentElement.classList.contains('dark') ? "dark" : "light"}
+                        theme={darkMode ? "light" : "dark"}
                         transition={Slide}
                     />
                 </form>

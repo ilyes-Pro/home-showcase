@@ -4,7 +4,7 @@ const ScrollContext = createContext();
 
 export default function CatemProvider({ children }) {
     const [page, setPage] = useState("");
-
+    const [darkMode, setDarkMode] = useState(true);
     const refs = {
         main: useRef(null),
         about: useRef(null),
@@ -33,7 +33,7 @@ export default function CatemProvider({ children }) {
     }
 
     return (
-        <ScrollContext.Provider value={{ page, setPage, refs }}>
+        <ScrollContext.Provider value={{ page, setPage, refs, darkMode, setDarkMode }}>
             {children}
         </ScrollContext.Provider>
     );
