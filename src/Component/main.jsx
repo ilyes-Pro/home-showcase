@@ -40,8 +40,8 @@ const Main = forwardRef((props, ref) => {
 
                 <h1 className="md:text-6xl text-5xl text-white md:w-[50%] w-[95%] text-center font-bold">Explore homes that fit your dreams</h1>
                 <div className="mt-10 flex gap-5">
-                    <button className='text-white bg-transparent p-2 rounded-md w-28 cursor-pointer hover:bg-white hover:text-black border-white border-2 hover:p-1.5 transition duration-300 font-(family-name:--font-main) font-medium dark:font-bold dark:border-black dark:text-black  dark:hover:text-white dark:hover:bg-black'>Sign up</button>
-                    <button className='text-white bg-blue-500 p-2 rounded-md w-28 h-12 cursor-pointer   hover:bg-blue-600  transition duration-300 font-(family-name:--font-main) font-medium '>Sign up</button>
+                    <button className='text-white bg-transparent p-2 rounded-md w-28 cursor-pointer hover:bg-white hover:text-black border-white border-2 hover:p-1.5 transition duration-300 font-(family-name:--font-main) font-medium dark:font-bold dark:border-black dark:text-black  dark:hover:text-white dark:hover:bg-black' onClick={() => setPage("projects")} >Projects</button>
+                    <button className='text-white bg-blue-500 p-2 rounded-md w-28 h-12 cursor-pointer   hover:bg-blue-600  transition duration-300 font-(family-name:--font-main) font-medium ' onClick={() => setPage("contact")}>Contact US</button>
 
                 </div>
             </motion.div>

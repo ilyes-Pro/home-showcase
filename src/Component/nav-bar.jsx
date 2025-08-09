@@ -1,5 +1,5 @@
 import { Assets } from '../assets/Photos and Data/assets';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { usePage } from './context/nav-barContext';
 import { motion, AnimatePresence } from "framer-motion";
 import { Moon, Sun, X } from 'lucide-react';
@@ -9,17 +9,31 @@ export default function NavBar() {
     const { page, setPage } = usePage();
     const [darkMode, setDarkMode] = useState(true);
 
+
+    useEffect(() => {
+        let theme = localStorage.getItem('theme');
+        if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+            setDarkMode(false);
+
+        } else {
+            document.documentElement.classList.remove('dark');
+            setDarkMode(true);
+        }
+    }, []);
+
     function handlDarkMod() {
+        const newMode = !darkMode; // القيمة الجديدة
+        setDarkMode(newMode);
 
-
-
-
-
-        document.documentElement.classList.toggle('dark')
-
-        setDarkMode(!darkMode)
+        if (!newMode) {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem("theme", 'dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem("theme", 'lite');
+        }
     }
-
 
     return (
 
@@ -31,11 +45,11 @@ export default function NavBar() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
 
-            className='flex md:justify-around  justify-between items-center pt-5 flex-wrap  md:px-0.5 px-5 w-11/12 m-auto'
+            className='flex md:justify-between  justify-between items-center pt-5 flex-wrap  md:px-0 px-5 w-11/12 m-auto'
         >
 
 
-            <img src={darkMode ? Assets.logo : Assets.logo_dark} alt="Logo" className=' cursor-pointer' />
+            <img src={darkMode ? Assets.logo : Assets.logo_dark} alt="Logo" className=' cursor-pointer ' />
             <ul className=' hidden  md:gap-5  cursor-pointer st md:flex'>
 
                 <li className="font-(family-name:--font-main) relative inline-block text-white cursor-pointer 
@@ -69,13 +83,6 @@ export default function NavBar() {
            hover:after:scale-x-100
            after:transition-transform after:duration-300" onClick={() => setPage("testimonials")}>Testimonials</li>
 
-
-                <li className="font-(family-name:--font-main) relative inline-block text-white cursor-pointer 
-           after:content-[''] after:absolute after:left-0 after:bottom-[-2px] 
-           after:h-[2px] after:w-full after:bg-red-300
-           after:scale-x-0 after:origin-center
-           hover:after:scale-x-100
-           after:transition-transform after:duration-300" onClick={() => setPage("contact")}>Contact</li>
 
             </ul>
 
@@ -141,8 +148,8 @@ export default function NavBar() {
 
                 </motion.div>}
             </AnimatePresence>
-            <div className=' hidden md:block'>
-                {darkMode ? <Sun onClick={handlDarkMod} size={43} color='white' className=' cursor-pointer' /> : <Moon onClick={handlDarkMod} size={43} className=' cursor-pointer' />}
+            <div className=' hidden md:block md:ml-19 '>
+                {darkMode ? <Sun onClick={handlDarkMod} size={43} color='white' className=' cursor-pointer ' /> : <Moon onClick={handlDarkMod} size={43} className=' cursor-pointer' />}
             </div>
 
 

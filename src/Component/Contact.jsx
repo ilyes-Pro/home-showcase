@@ -156,7 +156,8 @@ const Contact = forwardRef((props, ref) => {
                         pauseOnFocusLoss
                         draggable
                         pauseOnHover
-                        theme="light"
+
+                        theme={document.documentElement.classList.contains('dark') ? "dark" : "light"}
                         transition={Slide}
                     />
                 </form>
