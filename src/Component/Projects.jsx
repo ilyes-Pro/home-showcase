@@ -82,7 +82,7 @@ const Projects = forwardRef((props, ref) => {
                                     <motion.div
                                         src={a.image}
                                         alt="Slide 1"
-                                        className='dark:bg-black w-[75%] h-[60px] bg-white absolute bottom-0 right-[50%] translate-x-[50%] shadow-md'
+                                        className='dark:bg-black w-[75%] h-[60px] bg-white absolute sm:bottom-[-40px] bottom-[-30px] right-[50%]  translate-x-[50%] shadow-md'
                                         initial={{ opacity: 0, y: 10 }}
                                         whileInView={{ opacity: 1, y: 0 }}
                                         transition={{ duration: 0.5, ease: "easeOut", delay: 1 + index / 3.5 }}

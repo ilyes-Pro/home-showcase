@@ -103,7 +103,7 @@ const Contact = forwardRef((props, ref) => {
                                 type="text"
                                 name="name"
                                 value={text.name}
-                                className={`h-9 w-full rounded-sm text-sm p-3 ${hasError("name") ? "border-2 border-red-500" : "border border-gray-300"
+                                className={`h-9 w-full dark:text-white rounded-sm text-sm p-3 ${hasError("name") ? "border-2 border-red-500" : "border border-gray-300"
                                     }`}
                                 placeholder="Your Name"
                                 onChange={(e) => setText((prev) => ({ ...prev, name: e.target.value }))}
@@ -115,7 +115,7 @@ const Contact = forwardRef((props, ref) => {
                                 type="email"
                                 name="email"
                                 value={text.email}
-                                className={`h-9 w-full rounded-sm text-sm p-3 ${hasError("email") ? "border-2 border-red-500" : "border border-gray-300"
+                                className={`h-9 w-full dark:text-white rounded-sm text-sm p-3 ${hasError("email") ? "border-2 border-red-500" : "border border-gray-300"
                                     }`}
                                 placeholder="Your Email"
                                 onChange={(e) => setText((prev) => ({ ...prev, email: e.target.value }))}
@@ -131,7 +131,7 @@ const Contact = forwardRef((props, ref) => {
                             rows="7"
                             cols="30"
                             placeholder="Message"
-                            className={`w-full rounded-sm text-sm p-3 ${hasError("message") ? "border-2 border-red-500" : "border border-gray-300"
+                            className={`w-full rounded-sm text-sm dark:text-white p-3 ${hasError("message") ? "border-2 border-red-500" : "border border-gray-300"
                                 }`}
                             onChange={(e) => setText((prev) => ({ ...prev, message: e.target.value }))}
                         />
