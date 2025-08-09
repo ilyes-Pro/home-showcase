@@ -7,7 +7,7 @@ const Customer = forwardRef((props, ref) => {
 
     return (
 
-        <div className="mb-28" ref={ref}>
+        <div className="pb-28 dark:bg-black" ref={ref}>
             <motion.div
                 className="text-center"
                 initial={{ opacity: 0 }}
@@ -17,7 +17,7 @@ const Customer = forwardRef((props, ref) => {
                 viewport={{ once: true, amount: 0.9 }}
             >
 
-                <h1 className='text-center mt-5 text-3xl mb-1.5'>
+                <h1 className='text-center pt-5 text-3xl mb-1.5 dark:text-white'>
                     <span className="font-bold">Customer  </span>
                     <span className="underline">Testimonials</span>
                 </h1>
@@ -30,7 +30,7 @@ const Customer = forwardRef((props, ref) => {
 
                 {testimonialsData.map((a, index) =>
                     <motion.div
-                        className="w-[320px] h-[350px]  rounded-lg shadow-2xl flex  justify-center items-center flex-col gap-1 cursor-pointer transition duration-200 delay-100 hover:transform hover:scale-110 
+                        className="dark:bg-gray-1000  w-[320px] h-[350px]  rounded-lg shadow-2xl dark:shadow-sm dark:shadow-white flex  justify-center items-center flex-col gap-1 cursor-pointer transition duration-200 delay-100 hover:transform hover:scale-110 
                     "
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
@@ -39,7 +39,7 @@ const Customer = forwardRef((props, ref) => {
                     >
 
                         <img src={a.image} alt={a.alt} />
-                        <h1 className="mt-2.5 font-medium">{a.name}</h1>
+                        <h1 className="mt-2.5 font-medium dark:text-white">{a.name}</h1>
                         <p className='   text-[var(--color-secand)] font-[var(--font-main)] text-sm'>
                             {a.title}
                         </p>

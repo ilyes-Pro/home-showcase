@@ -61,7 +61,7 @@ const Contact = forwardRef((props, ref) => {
     const hasError = (field) => errors.includes(field);
 
     return (
-        <div className="mb-24" ref={ref}>
+        <div className="pb-24 dark:bg-black" ref={ref}>
             <motion.div
                 className="text-center"
                 initial={{ opacity: 0 }}
@@ -71,7 +71,7 @@ const Contact = forwardRef((props, ref) => {
                 viewport={{ once: true, amount: 0.9 }}
             >
 
-                <h1 className='text-center mt-5 text-3xl mb-1.5'>
+                <h1 className='text-center pt-5 text-3xl mb-1.5 dark:text-white'>
                     <span className="font-bold">Contact </span>
                     <span className="underline">With Us</span>
                 </h1>
@@ -98,7 +98,7 @@ const Contact = forwardRef((props, ref) => {
 
                     <div className="flex gap-3">
                         <div className="w-6/12">
-                            <p>Your Name</p>
+                            <p className="dark:text-white">Your Name</p>
                             <input
                                 type="text"
                                 name="name"
@@ -110,7 +110,7 @@ const Contact = forwardRef((props, ref) => {
                             />
                         </div>
                         <div className="w-6/12">
-                            <p>Your Email</p>
+                            <p className="dark:text-white">Your Email</p>
                             <input
                                 type="email"
                                 name="email"
@@ -124,7 +124,7 @@ const Contact = forwardRef((props, ref) => {
                     </div>
 
                     <div>
-                        <p>Message</p>
+                        <p className="dark:text-white">Message</p>
                         <textarea
                             name="message"
                             value={text.message}

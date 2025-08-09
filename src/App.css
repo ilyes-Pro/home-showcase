@@ -1,4 +1,8 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+
 
 @font-face {
     font-family: "Inter";
@@ -29,6 +33,19 @@
 @theme {
     --font-main: Inter, sans-serif;
     --color-secand: #6B7280;
+}
+
+
+:root {
+    --color-bg: white;
+    --color-text: black;
+    --color-border: black;
+}
+
+.dark {
+    --color-bg: black;
+    --color-text: white;
+    --color-border: white;
 }
 
 /* لإزالة الهوامش والمساحات الافتراضية */
