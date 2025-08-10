@@ -25,7 +25,7 @@ const Footer = forwardRef((props, ref) => {
 
                     <div className="lg:w-3/12 md:w-4/12 w-11/12" >
                         <img src={Assets.logo_dark} alt="" className="md:w-[105px] w-[100px] mb-3" />
-                        <p className="text-[var(--color-secand)] md:text-sm text-sm">Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text . </p>
+                        <p className="text-[var(--color-secand)] md:text-sm text-xs">Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text . </p>
                     </div>
 
                     <div className="flex flex-col gap-2.5">

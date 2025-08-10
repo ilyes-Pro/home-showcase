@@ -45,7 +45,7 @@ export default function NavBar() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
 
-            className='flex md:justify-between  justify-between items-center pt-5 flex-wrap  md:px-0 px-5 w-11/12 m-auto'
+            className='flex lg:justify-between  justify-between items-center pt-5 flex-wrap  lg:px-0 px-5 w-11/12 m-auto'
         >
 
 
@@ -97,11 +97,11 @@ export default function NavBar() {
                     // whileInView={{ opacity: 1,}}
                     exit={{ opacity: 0 }}
                     viewport={{ once: true }}
-                    className='h-screen w-screen bg-white dark:bg-gray-900 fixed top-0 left-0 z-50 block  md:hidden '
+                    className='h-screen w-screen bg-white dark:bg-gray-900 fixed top-0 left-0 z-50 block  lg:hidden '
                 >
 
                     <div className='flex flex-row-reverse items-center justify-between pt-5    px-4 w-11/12 m-auto'>
-                        <X size={40} className='dark:text-white  text-black  cursor-pointer block md:hidden ' onClick={() => setMenu(false)} />
+                        <X size={40} className='dark:text-white  text-black  cursor-pointer block lg:hidden ' onClick={() => setMenu(false)} />
                         {darkMode ? <Sun onClick={handlDarkMod} size={40} color='black' className=' cursor-pointer' /> : <Moon onClick={handlDarkMod} size={40} color='white' className=' cursor-pointer' />}
                     </div>
                     <ul className='flex flex-col items-center gap-5  cursor-pointer pt-15'>
@@ -148,7 +148,7 @@ export default function NavBar() {
 
                 </motion.div>}
             </AnimatePresence>
-            <div className=' hidden lg:block md:ml-19 '>
+            <div className=' hidden lg:block lg:ml-19 '>
                 {darkMode ? <Sun onClick={handlDarkMod} size={43} color='white' className=' cursor-pointer ' /> : <Moon onClick={handlDarkMod} size={43} className=' cursor-pointer' />}
             </div>
 
