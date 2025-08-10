@@ -148,7 +148,8 @@ const Contact = forwardRef((props, ref) => {
                         </button>
                     </div>
 
-                    <ToastContainer
+                    {/* <ToastContainer
+                        // className="!w-[200px] text-xs h-[60px] lg:!w-[350px] md:!w-[200px] sm:!w-[150px] "
                         position="bottom-right"
                         autoClose={3000}
                         hideProgressBar={false}
@@ -159,8 +160,17 @@ const Contact = forwardRef((props, ref) => {
                         draggable
                         pauseOnHover
 
-                        theme={darkMode ? "light" : "dark"}
+                
                         transition={Slide}
+                    /> */}
+
+                    <ToastContainer
+                        className="Toastify__toast-container  "
+                        toastClassName="!w-[300px] max-xs:!w-[50%] max-sm:!w-[80%] max-sm:text-xs max-xs:bottom-7 max-xs:right-3 max-sm:!rounded-md"
+
+                        position="bottom-right"
+                        transition={Slide}
+                        theme={darkMode ? "light" : "dark"}
                     />
                 </form>
             </motion.div>

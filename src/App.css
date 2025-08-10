@@ -33,6 +33,7 @@
 @theme {
     --font-main: Inter, sans-serif;
     --color-secand: #6B7280;
+    --breakpoint-xs: 30rem;
 }
 
 

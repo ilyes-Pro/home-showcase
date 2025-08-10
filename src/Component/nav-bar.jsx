@@ -50,7 +50,7 @@ export default function NavBar() {
 
 
             <img src={darkMode ? Assets.logo : Assets.logo_dark} alt="Logo" className=' cursor-pointer ' />
-            <ul className=' hidden  md:gap-5  cursor-pointer st md:flex'>
+            <ul className=' hidden  md:gap-5  cursor-pointer st lg:flex'>
 
                 <li className="font-(family-name:--font-main) relative inline-block text-white cursor-pointer 
            after:content-[''] after:absolute after:left-0 after:bottom-[-2px] 
@@ -86,7 +86,7 @@ export default function NavBar() {
 
             </ul>
 
-            <img src={Assets.menu_icon} alt="Logo" className='size-7 cursor-pointer block md:hidden' onClick={() => setMenu(true)} />
+            <img src={Assets.menu_icon} alt="Logo" className='size-7 cursor-pointer block lg:hidden' onClick={() => setMenu(true)} />
             {/* <Menu className='text-white size-7' /> */}
 
             <AnimatePresence>
@@ -148,7 +148,7 @@ export default function NavBar() {
 
                 </motion.div>}
             </AnimatePresence>
-            <div className=' hidden md:block md:ml-19 '>
+            <div className=' hidden lg:block md:ml-19 '>
                 {darkMode ? <Sun onClick={handlDarkMod} size={43} color='white' className=' cursor-pointer ' /> : <Moon onClick={handlDarkMod} size={43} className=' cursor-pointer' />}
             </div>
 

@@ -55,7 +55,7 @@ const Main = forwardRef((props, ref) => {
             <AnimatePresence>
                 {showArrowUp && (
                     <motion.div
-                        className="bg-gray-600 w-14 h-14 fixed right-10 bottom-10 rounded-4xl flex justify-center items-center cursor-pointer"
+                        className="bg-gray-600 w-14 h-14 fixed right-10 bottom-10 rounded-4xl flex justify-center items-center cursor-pointer z-50"
                         initial={{ opacity: 0, y: 50 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 50 }}
