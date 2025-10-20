@@ -26,12 +26,13 @@ export default function NavBar() {
         const newMode = !darkMode; // القيمة الجديدة
         setDarkMode(newMode);
 
-        if (!newMode) {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem("theme", 'dark');
-        } else {
+        if (newMode) {
             document.documentElement.classList.remove('dark');
             localStorage.setItem("theme", 'lite');
+
+        } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem("theme", 'dark');
         }
     }
 
